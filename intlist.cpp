@@ -32,13 +32,25 @@ IntList::IntList(const IntList& source) {
 
 // destructor deletes all nodes
 IntList::~IntList() {
-    //IMPLEMENT THIS
+    Node* curr = first;
+    while (curr != NULL) {
+        Node* next = curr->next;
+        delete curr;
+        curr = next;
+    }
+    first = NULL;       //lets reader know list is empty
 }
-
 
 // return sum of values in list
 int IntList::sum() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+    int sum = 0;
+    Node* curr = first;
+    while (curr != NULL) {
+        Node* next = curr->next;
+        sum = sum + curr->info;
+        curr = next;
+    }
+    return sum;
 }
 
 // returns true if value is in the list; false if not
