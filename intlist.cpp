@@ -55,7 +55,15 @@ int IntList::sum() const {
 
 // returns true if value is in the list; false if not
 bool IntList::contains(int value) const {
-    return false; // REPLACE THIS NON-SOLUTION
+    Node* curr = first;
+    while (curr != NULL) {
+        Node* next = curr->next;
+        if (curr->info == value) {
+            return true;
+        }
+        curr = next;
+    }
+    return false;
 }
 
 // returns maximum value in list, or 0 if empty list
