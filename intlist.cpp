@@ -68,18 +68,47 @@ bool IntList::contains(int value) const {
 
 // returns maximum value in list, or 0 if empty list
 int IntList::max() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+    int max;
+    Node* curr = first;
+    if (curr == NULL) {
+        return 0;
+    }
+    while (curr != NULL) {
+        Node* next = curr->next;
+        if (curr->info > max) {
+            max = curr->info;
+            curr = next;
+        }
+    }
+    return max;
 }
 
 // returns average (arithmetic mean) of all values, or
 // 0 if list is empty
 double IntList::average() const {
-    return 0.0; // REPLACE THIS NON-SOLUTION
+    double avg = 0.0;
+    int numVals = 0;
+    int sum = 0;
+    Node* curr = first;
+    if (curr == NULL) {
+        return 0.0;
+    }
+    while (curr != NULL) {
+        numVals = numVals + 1;
+        sum = sum + curr->info;
+        Node* next = curr->next;
+        curr = next;
+    }
+    avg = static_cast<double>(sum) / numVals;   //float division
+    return avg;
 }
 
 // inserts value as new node at beginning of list
 void IntList::insertFirst(int value) {
-    // IMPLEMENT
+    Node* newNode = new Node;
+    newNode->info = value;
+    newNode->next = first;
+    first = newNode;
 }
 
 //Assignment operator should copy the list from the source
